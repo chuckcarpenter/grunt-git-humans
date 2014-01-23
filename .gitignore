@@ -1,3 +1,6 @@
 node_modules
 npm-debug.log
 tmp
+
+# So as not to accidentally commit one
+humans.txt

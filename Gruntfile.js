@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       //     'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
       //   },
       // },
-      master: {
+      seek: {
         branch: 'master'
       }
       
