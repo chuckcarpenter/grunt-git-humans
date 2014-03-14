@@ -21,11 +21,13 @@ module.exports = function(grunt) {
         branch: 'master',
         byCommits: false,
         chronologically: false,
-        tab: '\t'
+        banner: ''
     }),
         cwd = process.cwd(),
         done = this.async(),
-        
+
+    banner = grunt.template.process(options.banner),
+
     createList = function (stdout, chronologically) {
       var log = stdout.split('\n'),
           authors = [];
@@ -51,22 +53,22 @@ module.exports = function(grunt) {
     },
 
     writeFile = function(error, result, code) {
-      var authors, content = ''; 
+      var authors, content = '';
       if (error) {
         grunt.log.error('Please make sure you have \'git-extras\' installed on your system.');
       } else {
         grunt.log.write('Writing to ' + options.path + ' ... ');
         if ( !!options.byCommits ) {
             authors = result.stdout;
+            content += writeBanner() + '\n\n';
             content += '/* TEAM */ (ordered by commits)\n\n';
             content += authors;
-            content += '\n\n' + writeBanner();
             grunt.file.write(path.join(cwd, options.path), content);
         } else {
             authors = createList(result.stdout, options.chronologically);
+            content += writeBanner() + '\n\n';
             content += '/* TEAM */\n\n';
             content += authors;
-            content += '\n\n' + writeBanner();
             grunt.file.write(path.join(cwd, options.path), content);
         }
         grunt.log.ok();
@@ -74,12 +76,16 @@ module.exports = function(grunt) {
       done(code === 0);
     },
 
-    writeBanner = function ( ) {
+    writeBanner = function () {
+        if ( options.banner !== '' ) {
+            return banner;
+        }
+
         var date = new Date( ),
             day = date.getDate(),
             month = date.getMonth() + 1,
             year = date.getFullYear();
-        return "Last update: " + year + "/" + month + "/" + day + '\n';
+        return "Last update: " + year + "/" + month + "/" + day;
     };
 
     if (!!options.branch)

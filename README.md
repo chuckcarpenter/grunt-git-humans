@@ -47,16 +47,22 @@ Default value: `'master'`
 A string value that is used to determine what branch the list will be used for the query.
 
 #### options.byCommits
-Type: `String`
+Type: `Boolean`
 Default value: `false`
 
 A boolean value that allows you to return the list ordered by number of commits.
 
 #### options.chronologically
-Type: `String`
+Type: `Boolean`
 Default value: `false`
 
 A boolean value that allows you to return the list ordered by latest commits.
+
+#### options.banner
+Type: `String`
+Default value: `Empty String`
+
+This string will be prepended to the output. Template strings (e.g. <%= config.value %> can be used and are encouraged. If left empty, will add last updated dated.
 
 ### Usage Examples
 
@@ -91,3 +97,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 * 2014-03-14   v0.1.0  First release to start initial use on projects
+
+## Todo
+* Add more detailed tests (e.g., testing for git and log results)

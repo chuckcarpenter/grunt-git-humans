@@ -34,6 +34,7 @@ module.exports = function(grunt) {
         options: {
           path: 'tmp/custom.txt',
           branch: 'master',
+          banner: 'Made by me on <%= grunt.template.today("yyyy-mm-dd") %>',
           byCommits: true,
           chronologically: true,
         },
