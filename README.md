@@ -1,6 +1,6 @@
 # grunt-git-humans
 
-> A plugin to get Git contributors and create a humans text file.
+> A plugin to get Git contributors and create a humans text file. More information about this file and how to create one for knowing whom has contributed to a site, can be found at [humanstxt.org](http://humanstxt.org/).
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -28,26 +28,35 @@ grunt.initConfig({
     options: {
       // Task-specific options go here.
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
   },
 })
 ```
 
 ### Options
 
-#### options.separator
+#### options.path
 Type: `String`
-Default value: `',  '`
+Default value: `'./humans.txt'`
 
-A string value that is used to do something with whatever.
+The default path and filename for the file. 
 
-#### options.punctuation
+#### options.branch
 Type: `String`
-Default value: `'.'`
+Default value: `'master'`
 
-A string value that is used to do something else with whatever else.
+A string value that is used to determine what branch the list will be used for the query.
+
+#### options.byCommits
+Type: `String`
+Default value: `false`
+
+A boolean value that allows you to return the list ordered by number of commits.
+
+#### options.chronologically
+Type: `String`
+Default value: `false`
+
+A boolean value that allows you to return the list ordered by latest commits.
 
 ### Usage Examples
 
@@ -58,9 +67,6 @@ In this example, the default options are used to do something with whatever. So 
 grunt.initConfig({
   git_humans: {
     options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
   },
 })
 ```
@@ -72,11 +78,9 @@ In this example, custom options are used to do something else with whatever else
 grunt.initConfig({
   git_humans: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      path: 'tmp/custom.txt',
+      branch: 'master',
+      byCommits: true
     },
   },
 })
@@ -86,4 +90,4 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+* 2014-03-14   v0.1.0  First release to start initial use on projects
