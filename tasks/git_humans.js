@@ -57,7 +57,11 @@ module.exports = function(grunt) {
       } else {
         grunt.log.write('Writing to ' + options.path + ' ... ');
         if ( !!options.byCommits ) {
-            grunt.file.write(path.join(cwd, options.path), result.stdout);
+            authors = result.stdout;
+            content += '/* TEAM */ (ordered by commits)\n\n';
+            content += authors;
+            content += '\n\n' + writeBanner();
+            grunt.file.write(path.join(cwd, options.path), content);
         } else {
             authors = createList(result.stdout, options.chronologically);
             content += '/* TEAM */\n\n';

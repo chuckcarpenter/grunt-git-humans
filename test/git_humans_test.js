@@ -23,25 +23,19 @@ var grunt = require('grunt');
 */
 
 exports.git_humans = {
-  setUp: function(done) {
-    // setup here if necessary
-    done();
-  },
   default_options: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    var expected = grunt.file.exists('tmp/humans.txt');
+    test.equal(expected, true, 'should see this humans.txt created for default.');
 
     test.done();
   },
   custom_options: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+    var expected = grunt.file.exists('tmp/custom.txt');
+    test.equal(expected, true, 'should see this custom.txt created for testing options.');
 
     test.done();
   },
