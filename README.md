@@ -20,7 +20,7 @@ grunt.loadNpmTasks('grunt-git-humans');
 ## The "git_humans" task
 
 ### Overview
-In your project's Gruntfile, add a section named `git_humans` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `git_humans` to the data object passed into `grunt.initConfig()`. The task will respect the git mailmap file in your root, if you decide to use one.
 
 ```js
 grunt.initConfig({

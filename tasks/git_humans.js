@@ -45,7 +45,7 @@ module.exports = function(grunt) {
     },
 
     outputList = function() {
-      var args = ( !!options.byCommits ) ? ['shortlog', '-nse', 'HEAD'] : ['--git-dir', path.join(cwd, '.git'), '--no-pager', 'log'];
+      var args = ( !!options.byCommits ) ? ['shortlog', '-nse', 'HEAD'] : ['--git-dir', path.join(cwd, '.git'), '--no-pager', 'log', '--use-mailmap'];
       grunt.util.spawn({
         cmd: 'git',
         args: args
