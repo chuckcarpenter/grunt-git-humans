@@ -61,7 +61,7 @@ A boolean value that allows you to return the list ordered by latest commits.
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+In this example, the default options are used. No reason to pass anything to create the file at root from the master branch.
 
 ```js
 grunt.initConfig({
@@ -72,13 +72,13 @@ grunt.initConfig({
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+If you'd like to create the file as a different name for other purposes, or with alternate ordering options then you can do add those easily.
 
 ```js
 grunt.initConfig({
   git_humans: {
     options: {
-      path: 'tmp/custom.txt',
+      path: 'contributors/custom.txt',
       branch: 'master',
       byCommits: true
     },
