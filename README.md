@@ -1,5 +1,7 @@
 # grunt-git-humans
 
+[![Build Status](https://travis-ci.org/chuckcarpenter/grunt-git-humans.png?branch=v0.1.2)](https://travis-ci.org/chuckcarpenter/grunt-git-humans)
+
 > A plugin to get Git contributors and create a humans text file. More information about this file and how to create one for knowing whom has contributed to a site, can be found at [humanstxt.org](http://humanstxt.org/).
 
 ## Getting Started
