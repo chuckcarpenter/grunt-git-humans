@@ -21,6 +21,7 @@ module.exports = function(grunt) {
         branch: 'master',
         byCommits: false,
         chronologically: false,
+        mailmap: false,
         banner: ''
     }),
         cwd = process.cwd(),
@@ -45,7 +46,10 @@ module.exports = function(grunt) {
     },
 
     outputList = function() {
-      var args = ( !!options.byCommits ) ? ['shortlog', '-nse', 'HEAD'] : ['--git-dir', path.join(cwd, '.git'), '--no-pager', 'log', '--use-mailmap'];
+      var args = ( !!options.byCommits ) ? ['shortlog', '-nse', 'HEAD'] : ['--git-dir', path.join(cwd, '.git'), '--no-pager', 'log'];
+      // adding mailmap if true, needs git 1.8 min
+      if (options.mailmap) { args.push('--use-mailmap'); }
+
       grunt.util.spawn({
         cmd: 'git',
         args: args
@@ -55,7 +59,7 @@ module.exports = function(grunt) {
     writeFile = function(error, result, code) {
       var authors, content = '';
       if (error) {
-        grunt.log.error('Please make sure you have \'git-extras\' installed on your system.');
+        grunt.log.error(error);
       } else {
         grunt.log.write('Writing to ' + options.path + ' ... ');
         if ( !!options.byCommits ) {

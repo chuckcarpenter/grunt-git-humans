@@ -60,6 +60,12 @@ Default value: `false`
 
 A boolean value that allows you to return the list ordered by latest commits.
 
+#### options.mailmap
+Type: `Boolean`
+Default value: `false`
+
+A boolean value that allows you to use the mailmap file to clean up commit names/emails. _This requires git >= 1.8_
+
 #### options.banner
 Type: `String`
 Default value: `Empty String`
